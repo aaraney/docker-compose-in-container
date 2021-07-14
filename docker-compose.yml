@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  docker_composer:
+    build:
+      context: .
+    image: docker_composer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./services/:/services/
+    networks:
+      - docker_composer_net
+
+networks:
+  docker_composer_net:
+    name: composer_net
+    driver: bridge
